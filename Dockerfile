@@ -74,8 +74,9 @@ EXPOSE 8500 8600 8600/udp
 # process to reap any zombie processes created by Consul sub-processes.
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["agent", "-bootstrap", "-server", "-ui"]
 
 # By default you'll get an insecure single-node development server that stores
 # everything in RAM, exposes a web UI and HTTP endpoints, and bootstraps itself.
 # Don't use this configuration for production.
-CMD ["agent", "-bootstrap", "-server", "-ui"]
+#CMD ["agent", "-dev", "-client", "0.0.0.0"]
